@@ -1,0 +1,2 @@
+site,event_id,event_type,event_date,take_start_time,take_end_time,shed_start_time,shed_end_time,test_group
+building-1,1,shift,7/9/08,7/9/08 6:00,7/9/08 12:00,7/9/08 12:00,7/9/08 18:00,demand-response
