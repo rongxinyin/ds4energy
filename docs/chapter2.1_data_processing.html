@@ -7787,22 +7787,62 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate daily metrics</span>
-<span class="n">final_data</span><span class="p">[</span><span class="s1">'date'</span><span class="p">]</span> <span class="o">=</span> <span class="n">final_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
-<span class="n">daily_metrics</span> <span class="o">=</span> <span class="n">final_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'site_id'</span><span class="p">,</span> <span class="s1">'date'</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
-    <span class="s1">'power'</span><span class="p">:</span> <span class="s1">'sum'</span><span class="p">,</span>
-    <span class="s1">'temperature'</span><span class="p">:</span> <span class="s1">'mean'</span><span class="p">,</span>
-    <span class="s1">'humidity'</span><span class="p">:</span> <span class="s1">'mean'</span><span class="p">,</span>
-    <span class="s1">'windSpeed'</span><span class="p">:</span> <span class="s1">'mean'</span><span class="p">,</span>
-    <span class="s1">'precipIntensity'</span><span class="p">:</span> <span class="s1">'mean'</span><span class="p">,</span>
-    <span class="s1">'floor_area'</span><span class="p">:</span> <span class="s1">'first'</span>
-<span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define summer and winter seasons from utility perspective</span>
+<span class="n">summer_months</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>  <span class="c1"># June, July, August, September</span>
+<span class="n">winter_months</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>  <span class="c1"># Winter months</span>
 
-<span class="c1"># Calculate EUI</span>
-<span class="n">daily_metrics</span><span class="p">[</span><span class="s1">'EUI'</span><span class="p">]</span> <span class="o">=</span> <span class="n">daily_metrics</span><span class="p">[</span><span class="s1">'power'</span><span class="p">]</span> <span class="o">/</span> <span class="n">daily_metrics</span><span class="p">[</span><span class="s1">'floor_area'</span><span class="p">]</span>
+<span class="c1"># Add columns for easier filtering</span>
+<span class="n">meter_data</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="n">meter_data</span><span class="p">[</span><span class="s1">'hour'</span><span class="p">]</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
+
+<span class="c1"># Annual Electric Consumption - Summer (kWh)</span>
+<span class="n">summer_consumption</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">summer_months</span><span class="p">)][</span><span class="s1">'power'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Peak Electric Demand - Summer (kW)</span>
+<span class="n">summer_peak_demand</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">summer_months</span><span class="p">)][</span><span class="s1">'power'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># Peak Electric Demand - Winter (kW)</span>
+<span class="n">winter_peak_demand</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">winter_months</span><span class="p">)][</span><span class="s1">'power'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># Demand Threshold at the Top 50 Hours (kW)</span>
+<span class="n">top_50_demand_threshold</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="s1">'power'</span><span class="p">]</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+
+<span class="c1"># Annual Electric Energy Intensity (kWh/sq.ft)</span>
+<span class="n">annual_consumption</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="s1">'power'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">site_floor_area</span> <span class="o">=</span> <span class="n">site_description</span><span class="p">[</span><span class="s1">'floor_area'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Assuming one site for simplicity</span>
+<span class="n">annual_eui</span> <span class="o">=</span> <span class="n">annual_consumption</span> <span class="o">/</span> <span class="n">site_floor_area</span>
+
+<span class="c1"># Annual Peak Electric Demand Intensity (W/sq.ft)</span>
+<span class="n">annual_peak_demand</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="s1">'power'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">peak_demand_intensity</span> <span class="o">=</span> <span class="n">annual_peak_demand</span> <span class="o">/</span> <span class="n">site_floor_area</span> <span class="o">*</span> <span class="mi">1000</span>  <span class="c1"># W/sq.ft</span>
+
+<span class="c1"># Weather Sensitivity - Occupied and Unoccupied</span>
+<span class="c1"># Occupied: Define occupied hours (e.g., 8 AM to 6 PM)</span>
+<span class="n">occupied_hours</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[(</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'hour'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'hour'</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">18</span><span class="p">)]</span>
+<span class="n">unoccupied_hours</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[(</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'hour'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'hour'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">18</span><span class="p">)]</span>
+
+<span class="c1"># Merge with weather data</span>
+<span class="n">occupied_weather</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span><span class="n">occupied_hours</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'datetime'</span><span class="p">),</span> <span class="n">weather_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'datetime'</span><span class="p">),</span> <span class="n">on</span><span class="o">=</span><span class="s1">'datetime'</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">)</span>
+<span class="n">unoccupied_weather</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span><span class="n">unoccupied_hours</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'datetime'</span><span class="p">),</span> <span class="n">weather_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'datetime'</span><span class="p">),</span> <span class="n">on</span><span class="o">=</span><span class="s1">'datetime'</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">)</span>
+
+<span class="c1"># Correlation of weather sensitivity</span>
+<span class="n">occupied_corr</span> <span class="o">=</span> <span class="n">occupied_weather</span><span class="p">[[</span><span class="s1">'power'</span><span class="p">,</span> <span class="s1">'temperature'</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">unoccupied_corr</span> <span class="o">=</span> <span class="n">unoccupied_weather</span><span class="p">[[</span><span class="s1">'power'</span><span class="p">,</span> <span class="s1">'temperature'</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Compile metrics into a dictionary</span>
+<span class="n">performance_metrics</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"Annual Electric Consumption (Summer kWh)"</span><span class="p">:</span> <span class="n">summer_consumption</span><span class="p">,</span>
+    <span class="s2">"Peak Electric Demand (Summer kW)"</span><span class="p">:</span> <span class="n">summer_peak_demand</span><span class="p">,</span>
+    <span class="s2">"Peak Electric Demand (Winter kW)"</span><span class="p">:</span> <span class="n">winter_peak_demand</span><span class="p">,</span>
+    <span class="s2">"Demand Threshold at Top 50 Hours (kW)"</span><span class="p">:</span> <span class="n">top_50_demand_threshold</span><span class="p">,</span>
+    <span class="s2">"Annual Average Electric Energy Intensity (kWh/sq.ft)"</span><span class="p">:</span> <span class="n">annual_eui</span><span class="p">,</span>
+    <span class="s2">"Annual Peak Electric Demand Intensity (W/sq.ft)"</span><span class="p">:</span> <span class="n">peak_demand_intensity</span><span class="p">,</span>
+    <span class="s2">"Weather Sensitivity (Occupied)"</span><span class="p">:</span> <span class="n">occupied_corr</span><span class="p">,</span>
+    <span class="s2">"Weather Sensitivity (Unoccupied)"</span><span class="p">:</span> <span class="n">unoccupied_corr</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -7824,14 +7864,18 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Export metrics to JSON</span>
-<span class="n">output_json_path</span> <span class="o">=</span> <span class="s1">'data/chapter2/building_energy_metrics.json'</span>
-<span class="n">daily_metrics</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">'site_id'</span><span class="p">,</span> <span class="s1">'date'</span><span class="p">])</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">output_json_path</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">'index'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Export metrics to a JSON file</span>
+<span class="n">output_json_path_metrics</span> <span class="o">=</span> <span class="s1">'data/chapter2/building_energy_performance_metrics.json'</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_json_path_metrics</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">performance_metrics</span><span class="p">,</span> <span class="n">json_file</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Metrics exported to </span><span class="si">{</span><span class="n">output_json_path</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Metrics exported to </span><span class="si">{</span><span class="n">output_json_path_metrics</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Display the performance metrics</span>
+<span class="n">performance_metrics</span>
 </pre></div>
 </div>
 </div>
@@ -7844,8 +7888,21 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Metrics exported to data/chapter2/building_energy_metrics.json
+<pre>Metrics exported to data/chapter2/building_energy_performance_metrics.json
 </pre>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>{'Annual Electric Consumption (Summer kWh)': 1322321.28,
+ 'Peak Electric Demand (Summer kW)': 314.88,
+ 'Peak Electric Demand (Winter kW)': nan,
+ 'Demand Threshold at Top 50 Hours (kW)': 278.4,
+ 'Annual Average Electric Energy Intensity (kWh/sq.ft)': 15.798720160577314,
+ 'Annual Peak Electric Demand Intensity (kW/sq.ft)': 0.0037620970632512127,
+ 'Weather Sensitivity (Occupied)': 0.28299283734436803,
+ 'Weather Sensitivity (Unoccupied)': 0.2258003180235979}</pre>
 </div>
 </div>
 </div>
