@@ -7538,7 +7538,6 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Markdown-Cell">Markdown Cell<a class="anchor-link" href="#Markdown-Cell">¶</a></h1><p>"""</p>
 <h1 id="Building-Energy-Data-Analysis">Building Energy Data Analysis<a class="anchor-link" href="#Building-Energy-Data-Analysis">¶</a></h1><p>This notebook demonstrates the process of cleaning, processing, and analyzing building energy data and weather data to generate performance metrics.</p>
 <h2 id="Datasets">Datasets<a class="anchor-link" href="#Datasets">¶</a></h2><ol>
 <li><strong>Meter Data</strong>: Electrical power consumption data at 15-min intervals.</li>
@@ -7549,8 +7548,7 @@ a.anchor-link {
 <li>Clean and preprocess the data.</li>
 <li>Merge datasets for integrated analysis.</li>
 <li>Calculate building energy performance metrics.</li>
-<li>Export the metrics in JSON format.
-"""</li>
+<li>Export the metrics in JSON format.</li>
 </ul>
 </div>
 </div>
@@ -7708,12 +7706,12 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Clean meter data</span>
@@ -7731,22 +7729,6 @@ a.anchor-link {
 <span class="n">valid_site_ids</span> <span class="o">=</span> <span class="n">site_description</span><span class="p">[</span><span class="s1">'site_id'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 <span class="n">meter_data</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'site_id'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">valid_site_ids</span><span class="p">)]</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/var/folders/fq/6vcnqd4d3nlcwtdmsgb31hx40000gn/T/ipykernel_42232/692558170.py:2: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
-  meter_data['datetime'] = pd.to_datetime(meter_data['datetime'])
-/var/folders/fq/6vcnqd4d3nlcwtdmsgb31hx40000gn/T/ipykernel_42232/692558170.py:7: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
-  weather_data['datetime'] = pd.to_datetime(weather_data['datetime'])
-</pre>
 </div>
 </div>
 </div>
