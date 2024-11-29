@@ -7569,7 +7569,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -7599,7 +7599,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load the data</span>
@@ -7619,7 +7619,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>(      datetime           site_id  power
  0  6/1/08 0:00  TwoCarnegiePlaza  36.00
@@ -7706,7 +7706,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7715,12 +7715,12 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Clean meter data</span>
-<span class="n">meter_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'%m/</span><span class="si">%d</span><span class="s1">/%Y %H:%M:%S'</span><span class="p">)</span>
+<span class="n">meter_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">'coerce'</span><span class="p">)</span>
 <span class="n">meter_data</span> <span class="o">=</span> <span class="n">meter_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">'power'</span><span class="p">])</span>
 <span class="n">meter_data</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'power'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># Clean weather data</span>
-<span class="n">weather_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">weather_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'%m/</span><span class="si">%d</span><span class="s1">/%Y %H:%M:%S'</span><span class="p">)</span>
+<span class="n">weather_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">weather_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">'coerce'</span><span class="p">)</span>
 <span class="n">relevant_weather_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'datetime'</span><span class="p">,</span> <span class="s1">'temperature'</span><span class="p">,</span> <span class="s1">'humidity'</span><span class="p">,</span> <span class="s1">'windSpeed'</span><span class="p">,</span> <span class="s1">'precipIntensity'</span><span class="p">]</span>
 <span class="n">weather_data</span> <span class="o">=</span> <span class="n">weather_data</span><span class="p">[</span><span class="n">relevant_weather_columns</span><span class="p">]</span>
 <span class="n">weather_data</span> <span class="o">=</span> <span class="n">weather_data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">weather_data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
@@ -7729,6 +7729,22 @@ a.anchor-link {
 <span class="n">valid_site_ids</span> <span class="o">=</span> <span class="n">site_description</span><span class="p">[</span><span class="s1">'site_id'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 <span class="n">meter_data</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'site_id'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">valid_site_ids</span><span class="p">)]</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>/var/folders/fq/6vcnqd4d3nlcwtdmsgb31hx40000gn/T/ipykernel_45411/3798752314.py:2: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  meter_data['datetime'] = pd.to_datetime(meter_data['datetime'], errors='coerce')
+/var/folders/fq/6vcnqd4d3nlcwtdmsgb31hx40000gn/T/ipykernel_45411/3798752314.py:7: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  weather_data['datetime'] = pd.to_datetime(weather_data['datetime'], errors='coerce')
+</pre>
 </div>
 </div>
 </div>
@@ -7749,7 +7765,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Merge meter and weather data</span>
@@ -7787,7 +7803,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define summer and winter seasons from utility perspective</span>
@@ -7900,9 +7916,148 @@ a.anchor-link {
  'Peak Electric Demand (Winter kW)': nan,
  'Demand Threshold at Top 50 Hours (kW)': 278.4,
  'Annual Average Electric Energy Intensity (kWh/sq.ft)': 15.798720160577314,
- 'Annual Peak Electric Demand Intensity (kW/sq.ft)': 0.0037620970632512127,
+ 'Annual Peak Electric Demand Intensity (W/sq.ft)': 3.7620970632512125,
  'Weather Sensitivity (Occupied)': 0.28299283734436803,
  'Weather Sensitivity (Unoccupied)': 0.2258003180235979}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Building-Load-Shape-Analysis">Building Load Shape Analysis<a class="anchor-link" href="#Building-Load-Shape-Analysis">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Load-Shape-Metrics-Summary">Load Shape Metrics Summary<a class="anchor-link" href="#Load-Shape-Metrics-Summary">¶</a></h2><p>Figure below shows several parameters that can be used to summarize load shape. The following metrics are used to characterize the load shape of a building's energy usage. These metrics provide insights into daily load patterns, peak demand behavior, and the overall energy profile of the building:</p>
+<h3 id="1.-Near-Peak-Load"><strong>1. Near-Peak Load</strong><a class="anchor-link" href="#1.-Near-Peak-Load">¶</a></h3><ul>
+<li><strong>Definition</strong>: The 97.5th percentile of the daily load.</li>
+<li><strong>Purpose</strong>: Represents the highest levels of energy demand, helping to identify peak usage patterns and their implications for system design and capacity planning.</li>
+</ul>
+<h3 id="2.-Near-Base-Load"><strong>2. Near-Base Load</strong><a class="anchor-link" href="#2.-Near-Base-Load">¶</a></h3><ul>
+<li><strong>Definition</strong>: The 2.5th percentile of the daily load.</li>
+<li><strong>Purpose</strong>: Reflects the minimum load during periods of low energy usage, often corresponding to off-peak times or base-level operations.</li>
+</ul>
+<h3 id="3.-High-Load-Duration"><strong>3. High-Load Duration</strong><a class="anchor-link" href="#3.-High-Load-Duration">¶</a></h3><ul>
+<li><strong>Definition</strong>: The duration (in hours) during which the load is closer to the near-peak load than to the near-base load.</li>
+<li><strong>Purpose</strong>: Indicates how long the system operates near its peak capacity, which has implications for energy costs and equipment wear.</li>
+</ul>
+<h3 id="4.-Rise-Time"><strong>4. Rise Time</strong><a class="anchor-link" href="#4.-Rise-Time">¶</a></h3><ul>
+<li><strong>Definition</strong>: The time (in hours) between the latest time in the morning when the load is close to the near-base load and the earliest time during the day when the load exceeds halfway to the near-peak load.</li>
+<li><strong>Purpose</strong>: Captures the speed of energy demand increase, which is critical for understanding ramp-up rates and their impact on energy systems.</li>
+</ul>
+<h3 id="5.-Fall-Time"><strong>5. Fall Time</strong><a class="anchor-link" href="#5.-Fall-Time">¶</a></h3><ul>
+<li><strong>Definition</strong>: The time (in hours) between the end of the high-load period and when the load returns to the near-base load.</li>
+<li><strong>Purpose</strong>: Describes how quickly energy usage decreases after peak periods, which is important for assessing system responsiveness and flexibility.</li>
+</ul>
+<p>These metrics collectively provide a detailed picture of energy load behavior, supporting the optimization of energy systems for efficiency, reliability, and cost-effectiveness.</p>
+<p><img alt="Load Shape Parameters" src="figures/chapter1-load-shape.png"/></p>
+<p><em>Price, Phillip N. 2010. Methods for Analyzing Electric Load Shape and its Variability. Lawrence Berkeley National Laboratory, LBNL-3713E</em></p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Proceed with filtering for weekdays</span>
+<span class="n">meter_data</span><span class="p">[</span><span class="s1">'weekday'</span><span class="p">]</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span>  <span class="c1"># Monday = 0, Sunday = 6</span>
+
+<span class="c1"># Filter for weekdays (Monday to Friday)</span>
+<span class="n">weekday_data</span> <span class="o">=</span> <span class="n">meter_data</span><span class="p">[</span><span class="n">meter_data</span><span class="p">[</span><span class="s1">'weekday'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Generate an average daily load profile on weekdays</span>
+<span class="n">weekday_data</span><span class="p">[</span><span class="s1">'time'</span><span class="p">]</span> <span class="o">=</span> <span class="n">weekday_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">time</span>
+<span class="n">average_daily_profile</span> <span class="o">=</span> <span class="n">weekday_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'hour'</span><span class="p">)[</span><span class="s1">'power'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Calculate the load shape parameters</span>
+<span class="n">near_peak_load</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">average_daily_profile</span><span class="p">,</span> <span class="mf">97.5</span><span class="p">)</span>
+<span class="n">near_base_load</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">average_daily_profile</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+<span class="n">near_peak_load_density</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">average_daily_profile</span><span class="p">,</span> <span class="mf">97.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">site_floor_area</span> <span class="o">*</span> <span class="mi">1000</span>  <span class="c1"># Near-Peak Load Density (W/sq.ft)</span>
+<span class="n">near_base_load_density</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">average_daily_profile</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">site_floor_area</span> <span class="o">*</span> <span class="mi">1000</span>  <span class="c1"># Near-Base Load Density (W/sq.ft)</span>
+<span class="n">base_to_peak_ratio</span> <span class="o">=</span> <span class="n">near_base_load</span> <span class="o">/</span> <span class="n">near_peak_load</span>  <span class="c1"># Base to Peak Ratio</span>
+<span class="n">high_load_mask</span> <span class="o">=</span> <span class="n">average_daily_profile</span> <span class="o">&gt;=</span> <span class="p">((</span><span class="n">near_peak_load</span> <span class="o">+</span> <span class="n">near_base_load</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">high_load_duration</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">average_daily_profile</span><span class="p">[</span><span class="n">high_load_mask</span><span class="p">])</span>  <span class="c1"># High-Load Duration</span>
+<span class="n">base_to_peak_mask</span> <span class="o">=</span> <span class="n">average_daily_profile</span> <span class="o">&gt;=</span> <span class="n">near_peak_load</span>
+<span class="n">rise_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">base_to_peak_mask</span><span class="p">)</span>  <span class="c1"># Rise Time</span>
+<span class="n">fall_time</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">average_daily_profile</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">base_to_peak_mask</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># Fall Time</span>
+
+<span class="c1"># Define thresholds</span>
+<span class="n">base_load_threshold</span> <span class="o">=</span> <span class="n">near_base_load</span> <span class="o">*</span> <span class="mf">1.1</span>  <span class="c1"># 10% above the near-base load</span>
+<span class="n">midway_to_peak</span> <span class="o">=</span> <span class="p">(</span><span class="n">near_peak_load</span> <span class="o">+</span> <span class="n">near_base_load</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Group by day for per-day analysis</span>
+<span class="n">weekday_data</span><span class="p">[</span><span class="s1">'day'</span><span class="p">]</span> <span class="o">=</span> <span class="n">weekday_data</span><span class="p">[</span><span class="s1">'datetime'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+<span class="n">daily_profiles</span> <span class="o">=</span> <span class="n">weekday_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'day'</span><span class="p">,</span> <span class="s1">'hour'</span><span class="p">])[</span><span class="s1">'power'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># Initialize a list to store daily rise times</span>
+<span class="n">daily_rise_times</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">day</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">daily_profiles</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'day'</span><span class="p">):</span>
+    <span class="c1"># Find the latest time in the morning (before 12:00 PM) close to the base load</span>
+    <span class="n">morning_load</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">group</span><span class="p">[</span><span class="s1">'hour'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">]</span>
+    <span class="n">latest_base_time</span> <span class="o">=</span> <span class="n">morning_load</span><span class="p">[</span><span class="n">morning_load</span><span class="p">[</span><span class="s1">'power'</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">base_load_threshold</span><span class="p">][</span><span class="s1">'hour'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    
+    <span class="c1"># Find the earliest time when the load exceeds halfway to the near-peak load</span>
+    <span class="n">afternoon_load</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">group</span><span class="p">[</span><span class="s1">'hour'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">]</span>
+    <span class="n">earliest_midway_time</span> <span class="o">=</span> <span class="n">afternoon_load</span><span class="p">[</span><span class="n">afternoon_load</span><span class="p">[</span><span class="s1">'power'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">midway_to_peak</span><span class="p">][</span><span class="s1">'hour'</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    
+    <span class="c1"># Calculate rise time if both points are found</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">(</span><span class="n">latest_base_time</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">(</span><span class="n">earliest_midway_time</span><span class="p">):</span>
+        <span class="n">daily_rise_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">earliest_midway_time</span> <span class="o">-</span> <span class="n">latest_base_time</span><span class="p">)</span>
+
+<span class="c1"># Calculate the average rise time across all weekdays</span>
+<span class="n">average_rise_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">daily_rise_times</span><span class="p">)</span> <span class="k">if</span> <span class="n">daily_rise_times</span> <span class="k">else</span> <span class="kc">None</span>
+
+<span class="c1"># Organize results into a dictionary</span>
+<span class="n">load_shape_parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"Near-Peak Load (kW)"</span><span class="p">:</span> <span class="n">near_peak_load</span><span class="p">,</span>
+    <span class="s2">"Near-Base Load (kW)"</span><span class="p">:</span> <span class="n">near_base_load</span><span class="p">,</span>
+    <span class="s2">"Near-Peak Load Density (W/ft2)"</span><span class="p">:</span> <span class="n">near_peak_load_density</span><span class="p">,</span>
+    <span class="s2">"Near-Base Load Density(W/ft2)"</span><span class="p">:</span> <span class="n">near_base_load_density</span><span class="p">,</span>
+    <span class="s2">"Base to Peak Ratio"</span><span class="p">:</span> <span class="n">base_to_peak_ratio</span><span class="p">,</span>
+    <span class="s2">"High-Load Duration (hours)"</span><span class="p">:</span> <span class="n">high_load_duration</span><span class="p">,</span>
+    <span class="s2">"Rise Time (hours)"</span><span class="p">:</span> <span class="n">average_rise_time</span><span class="p">,</span>
+    <span class="s2">"Fall Time (hours)"</span><span class="p">:</span> <span class="n">fall_time</span>
+<span class="p">}</span>
+
+<span class="n">load_shape_parameters</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>{'Near-Peak Load (kW)': 236.724,
+ 'Near-Base Load (kW)': 44.087310344827586,
+ 'Near-Peak Load Density (W/ft2)': 2.8283113097087145,
+ 'Near-Base Load Density(W/ft2)': 0.5267426980910844,
+ 'Base to Peak Ratio': 0.1862392927832733,
+ 'High-Load Duration (hours)': 11,
+ 'Rise Time (hours)': 8.192307692307692,
+ 'Fall Time (hours)': 16}</pre>
 </div>
 </div>
 </div>
