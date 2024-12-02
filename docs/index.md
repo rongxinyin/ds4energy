@@ -10,4 +10,4 @@ layout: default
 ## [Introduction to Energy Systems](chapter1_intro.html)
 ## [Building Energy Use Prediction](chapter2_building_energy_prediction.html)
 ### [Data Processing](chapter2.1_data_processing.html)
-### [Baseline Model Development and Validation](chapter2.2_data_processing.html)
+### [Baseline Model Development and Validation](chapter2.2_baseline_model.html)
