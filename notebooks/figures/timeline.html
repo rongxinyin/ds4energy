@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Line Horizontal Timeline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .timeline-container {
+            width: 90%;
+            position: relative;
+        }
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 90%;
+            left: 5%;
+            height: 4px;
+            background-color: #4CAF50;
+            top: calc(50% - 20px);
+            z-index: 1;
+        }
+        .timeline-row {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        .timeline-event {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            margin: 20px;
+        }
+        .timeline-event .icon {
+            background-color: #4CAF50;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .timeline-event .year {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .timeline-event p {
+            font-size: 14px;
+            color: #333;
+            max-width: 150px;
+        }
+    </style>
+    <!-- Add FontAwesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="timeline-container">
+        <div class="timeline">
+            <!-- First Row -->
+            <div class="timeline-row">
+                <!-- Event 1 -->
+                <div class="timeline-event">
+                    <div class="icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="year">2002-2006</div>
+                    <p>Research initiated by LBNL/CEC</p>
+                </div>
+                <!-- Event 2 -->
+                <div class="timeline-event">
+                    <div class="icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="year">2006</div>
+                    <p>Pilots and field trials conducted by utilities (PG&E, SCE, SDG&E)</p>
+                </div>
+                <!-- Event 3 -->
+                <div class="timeline-event">
+                    <div class="icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="year">2008</div>
+                    <p>OpenADR 1.0 specification commercialization</p>
+                </div>
+                <!-- Event 4 -->
+                <div class="timeline-event">
+                    <div class="icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="year">2010-2011</div>
+                    <p>Standards development: OASIS, UCA, IEC; NIST Smart Grid</p>
+                </div>
+            </div>
+
+            <!-- Second Row -->
+            <div class="timeline-row">
+                <!-- Event 5 -->
+                <div class="timeline-event">
+                    <div class="icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="year">2012</div>
+                    <p>Over 250 MW automated; OpenADR 2.0 specifications released</p>
+                </div>
+                <!-- Event 6 -->
+                <div class="timeline-event">
+                    <div class="icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="year">2016</div>
+                    <p>Further international adoption of OpenADR 2.0 standards</p>
+                </div>
+                <!-- Event 7 -->
+                <div class="timeline-event">
+                    <div class="icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="year">2023</div>
+                    <p>OpenADR Alliance launches OpenADR 3.0</p>
+                </div>
+                <!-- Event 8 -->
+                <div class="timeline-event">
+                    <div class="icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="year">2024</div>
+                    <p>Integration of AI-driven demand response systems</p>
+                </div>
+                <!-- Event 9 -->
+                <div class="timeline-event">
+                    <div class="icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="year">2030</div>
+                    <p>Contribute to a state load shift goal of 7,000 MW by 2030</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
