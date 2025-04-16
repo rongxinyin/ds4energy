@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Smart Home Panel Control Logic</title>
+    <style>
+        /* Container for the flowchart */
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        /* Boxes representing steps or states */
+        .box {
+            border: 2px solid #333;
+            border-radius: 6px;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            width: 320px;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        /* Arrow lines between boxes */
+        .arrow-line {
+            width: 2px;
+            height: 40px;
+            background-color: #333;
+            margin: 0;
+        }
+
+        /* Arrowhead */
+        .arrow-head {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #333;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="flowchart">
+    <!-- Start: System Demand -->
+    <div class="box">System Demand</div>
+    <div class="arrow-line"></div>
+    <div class="arrow-head"></div>
+    
+    <!-- Decision: Demand <= 60A? -->
+    <div class="box">
+        <strong>Check Demand:</strong><br>
+        Is the total demand ≤ 60A?
+    </div>
+    <div class="arrow-line"></div>
+    <div class="arrow-head"></div>
+    
+    <!-- If YES: Use Main Panel normally -->
+    <div class="box">
+        <strong>YES:</strong><br>
+        • All loads remain on the Main Panel (60A).<br>
+        • Smart Home Panel 2 is connected but not actively supplying additional current.
+    </div>
+    <div class="arrow-line"></div>
+    <div class="arrow-head"></div>
+    
+    <!-- If NO: Exceeds 60A -->
+    <div class="box">
+        <strong>NO (Demand > 60A):</strong><br>
+        • Simple Switch disconnects Smart Home Panel 2 from the Main Panel.<br>
+        • Circuits on Smart Home Panel 2 go into island mode.
+    </div>
+    <div class="arrow-line"></div>
+    <div class="arrow-head"></div>
+    
+    <!-- Battery Supplies Up to 30A -->
+    <div class="box">
+        <strong>Island Mode:</strong><br>
+        • Battery automatically supplies up to 30A.<br>
+        • Smart Home Panel 2 manages ON/OFF of connected circuits to keep demand ≤ 30A.
+    </div>
+</div>
+
+</body>
+</html>
