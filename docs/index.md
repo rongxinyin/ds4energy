@@ -14,7 +14,7 @@ layout: default
 ### [Whole Building Energy Use Prediction](chapter2.3_whole_building_energy_prediction.html)
 ## [Flexible Loads in Residential Buildings](chapter3_flex_load_res.html)
 ### [Flexible Loads Modeling in Residential Buildings](chapter3.1_flex_load_model_res.html)
-### [Flexible Loads Control in Residential Buildings](chapter3.2_flex_load_control_res.html)
+### [Flexible Loads Control in Residential Buildings](chapter3.2_flex_load_res_mpc.html)
 ## [Flexible Loads in Commercial Buildings](chapter4_flex_load_com.html)
 ### [Flexible Loads Modeling in Commercial Buildings](chapter4.1_flex_load_model_com.html)
 ### [Flexible Loads Control in Commercial Buildings](chapter4.2_flex_load_control_com.html)
