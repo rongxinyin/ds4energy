@@ -10,7 +10,7 @@ layout: default
 ## [Introduction to Energy Systems](chapter1_intro.html)
 ## [Building Energy Use Prediction](chapter2_building_energy_prediction.html)
 ### [Data Processing](chapter2.1_data_processing.html)
-### [Baseline Model Development and Validation](chapter2.2_baseline_model.html)
+### [Baseline Model Development and Validation](chapter2.2_baseline_model_new.html)
 ### [Whole Building Energy Use Prediction](chapter2.3_whole_building_energy_prediction.html)
 ## [Flexible Loads in Residential Buildings](chapter3_flex_load_res.html)
 ### [Flexible Loads Modeling in Residential Buildings](chapter3.1_flex_load_model_res.html)
